@@ -43,16 +43,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         
         sharedPreferences= getSharedPreferences("input_text", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        
-        textName = sharedPreferences.getString("textName",textName);
-        textFirstName = sharedPreferences.getString("textFirstName",textFirstName);
-        textBirthday = sharedPreferences.getString("textBirthday",textBirthday);
-        textBirthDepartment = sharedPreferences.getString("textBirthDepartment",textBirthDepartment);
-        textTelephoneNumber = sharedPreferences.getString("textTelephoneNumber",textTelephoneNumber);
-        
         initView();
-
-        resetAction(item);
 
     }
     protected void initView(){
@@ -203,18 +194,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         textName = inputName.getText().toString();
         textFirstName = inputFirstName.getText().toString();
         textBirthday = inputBirthday.getText().toString();
         textBirthDepartment = inputBirthDepartment.getText().toString();
         textTelephoneNumber = inputTelephoneNumber.getText().toString();
-        editor.putString("input", textName);
-        editor.putString("inputFirstName", textFirstName);
-        editor.putString("inputBirthday", textBirthday);
-        editor.putString("inputBirthDepartment", textBirthDepartment);
-        editor.putString("inputTelephoneNumber", textTelephoneNumber);
-        editor.commit();
+        editor.putString("textName", textName);
+        editor.putString("textFirstName", textFirstName);
+        editor.putString("textBirthday", textBirthday);
+        editor.putString("textBirthDepartment", textBirthDepartment);
+        editor.putString("textTelephoneNumber", textTelephoneNumber);
+
+        editor.apply();
+        super.onDestroy();
     }
 }
 
