@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Dont Panic</string>
+    <string name="hello_text">Hello Universe!!!</string>
+    <string name="name_text">Name</string>
+    <string name="pre_name_text">First Name</string>
+    <string name="Date_na_text">Birthday</string>
+    <string name="City_na_text">City of Birth</string>
+    <string name="City_de_text">Department of Birth</string>
+    <string name="validation_text">validation</string>
+    <string name="Birthday">Select</string>
+    <string name="reset_action">Reset</string>
+    <string name="Add">Add</string>
+    <string name="add_telephone_number">Add Telephone number</string>
+</resources>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mScro"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/main"
+        >
+        <TextView
+            android:id="@+id/nom_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_text"/>
+        <EditText
+            android:id="@+id/edit_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="text"
+            tools:ignore="LabelFor,TextFields" />
+        <TextView
+            android:id="@+id/pre_nom_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pre_name_text"/>
+        <EditText
+            android:id="@+id/edit_text_1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="text"
+            tools:ignore="LabelFor,TextFields" />
+        <TextView
+            android:id="@+id/Date_na_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Date_na_text"/>
+
+        <Button
+            android:id="@+id/Button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="ShowDate"
+            android:text="@string/Birthday" />
+
+
+        <EditText
+            android:id="@+id/edit_text_2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType = "date"
+            tools:ignore="LabelFor,TextFields" />
+
+        <TextView
+            android:id="@+id/City_de_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/City_de_text"/>
+        <Spinner
+            android:id="@+id/Spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/departments"
+            />
+        <TextView
+            android:id="@+id/City_na_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/City_na_text"/>
+
+        <EditText
+            android:id="@+id/edit_text_3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType = "text"
+            tools:ignore="LabelFor,TextFields" />
+        <Button
+            android:id="@+id/Button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/validation_text"
+            android:onClick="Validation"/>
+
+        <LinearLayout
+            android:id="@+id/snackbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_telephone_number"
+            android:id="@+id/textview"/>
+        <EditText
+            android:id="@+id/tele"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="number"
+            tools:ignore="LabelFor,TextFields" />
+        <Button
+            android:id="@+id/Button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Add"
+            android:onClick="Add"/>
+
+    </LinearLayout>
+</ScrollView>
