@@ -1,31 +1,22 @@
 package com.example.helloworld;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.DatePickerDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.os.IResultReceiver;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -128,6 +119,21 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         input3.setText(inputtext3);
         spinnerDepartments.setSelection(0);
         deleteAllNumbers();
+    }
+
+    public void searchAction(MenuItem item) {
+        Intent intent = new Intent();
+        intent.setData(Uri.parse( "http://fr.wikipedia.org/?search="+input3.getText().toString()));
+        intent.setAction(Intent.ACTION_VIEW);
+        this.startActivity(intent);
+    }
+
+    public void shareAction(MenuItem item) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, input3.getText().toString());
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
     public void Validation(View v) {

@@ -5,4 +5,14 @@
         android:onClick="resetAction">
 
     </item>
+    <item android:id="@+id/SearchAction"
+        android:title="@string/Search_action"
+        android:onClick="searchAction">
+
+    </item>
+    <item android:id="@+id/ShareAction"
+        android:title="@string/share_action"
+        android:onClick="shareAction">
+
+    </item>
 </menu>

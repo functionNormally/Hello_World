@@ -9,6 +9,8 @@
     <string name="validation_text">validation</string>
     <string name="Birthday">Select</string>
     <string name="reset_action">Reset</string>
+    <string name="Search_action">Search</string>
+    <string name="share_action">Share</string>
     <string name="Add">Add</string>
     <string name="add_telephone_number">Add Telephone number</string>
 </resources>
