@@ -114,6 +114,13 @@
             android:layout_height="wrap_content"
             android:text="@string/Add"
             android:onClick="Add"/>
+        <LinearLayout
+            android:id="@+id/number_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

@@ -31,14 +31,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText input2;
     private EditText input3;
     private EditText input4;
+    private Spinner spinnerDepartments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MenuItem it = (MenuItem) findViewById(R.id.resetAction);
-        resetAction(it);
         initView();
+        resetAction(it);
 
     }
     protected void initView(){
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         input2 = (EditText) findViewById(R.id.edit_text_2);
         input3 = (EditText) findViewById(R.id.edit_text_3);
         input4 = (EditText) findViewById(R.id.tele);
+        spinnerDepartments = (Spinner) findViewById(R.id.Spinner);
     }
 
     @Override
@@ -60,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         input1.setText("");
         input2.setText("");
         input3.setText("");
-
+        spinnerDepartments.setSelection(0);
+        deleteAllNumbers();
     }
 
     public void Validation(View v) {
@@ -92,8 +95,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Add();
     }
 
-    private void Add() {
-        LinearLayout layout = (LinearLayout) findViewById(R.id.main);
+    public void Add() {
+//        LinearLayout layout = (LinearLayout) findViewById(R.id.main);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.number_area);
         LinearLayout AddLayout = new LinearLayout(this);
         AddLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         AddLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -111,6 +115,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         AddLayout.addView(delete);
         layout.addView(AddLayout);
         input4.setText("");
+    }
+
+    private void deleteAllNumbers() {
+        LinearLayout layout = (LinearLayout) findViewById(R.id.number_area);
+        layout.removeAllViews();
     }
 
     @Override
