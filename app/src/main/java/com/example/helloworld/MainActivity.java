@@ -26,7 +26,11 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-
+    private EditText input;
+    private EditText input1;
+    private EditText input2;
+    private EditText input3;
+    private EditText input4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +38,16 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         setContentView(R.layout.activity_main);
         MenuItem it = (MenuItem) findViewById(R.id.resetAction);
         resetAction(it);
+        initView();
 
     }
-
+    protected void initView(){
+        input = (EditText) findViewById(R.id.edit_text);
+        input1 = (EditText) findViewById(R.id.edit_text_1);
+        input2 = (EditText) findViewById(R.id.edit_text_2);
+        input3 = (EditText) findViewById(R.id.edit_text_3);
+        input4 = (EditText) findViewById(R.id.tele);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,10 +56,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void resetAction(MenuItem item) {
-        EditText input = (EditText) findViewById(R.id.edit_text);
-        EditText input1 = (EditText) findViewById(R.id.edit_text_1);
-        EditText input2 = (EditText) findViewById(R.id.edit_text_2);
-        EditText input3 = (EditText) findViewById(R.id.edit_text_3);
         input.setText("");
         input1.setText("");
         input2.setText("");
@@ -61,10 +68,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void Validation() {
-        EditText input = (EditText) findViewById(R.id.edit_text);
-        EditText input1 = (EditText) findViewById(R.id.edit_text_1);
-        EditText input2 = (EditText) findViewById(R.id.edit_text_2);
-        EditText input3 = (EditText) findViewById(R.id.edit_text_3);
+
         Snackbar.make(findViewById(R.id.snackbar_container), input.getText().toString()+ input1.getText().toString() + input2.getText().toString() + input3.getText().toString(), Snackbar.LENGTH_LONG).show();
     }
 
@@ -89,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void Add() {
-        EditText input4 = (EditText) findViewById(R.id.tele);
         LinearLayout layout = (LinearLayout) findViewById(R.id.main);
         LinearLayout AddLayout = new LinearLayout(this);
         AddLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -112,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        EditText input2 = (EditText) findViewById(R.id.edit_text_2);
         input2.setText(dayOfMonth+"/"+(month+1)+"/"+year);
     }
 }
