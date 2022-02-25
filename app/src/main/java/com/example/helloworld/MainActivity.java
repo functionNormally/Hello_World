@@ -20,16 +20,16 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    private EditText input;
-    private EditText input1;
-    private EditText input2;
-    private EditText input3;
-    private EditText input4;
-    private String inputtext;
-    private String inputtext1;
-    private String inputtext2;
-    private String inputtext3;
-    private String inputtext4;
+    private EditText inputName;
+    private EditText inputFirstName;
+    private EditText inputBirthday;
+    private EditText inputBirthDepartment;
+    private EditText inputTelephoneNumber;
+    private String textName;
+    private String textFirstName;
+    private String textBirthday;
+    private String textBirthDepartment;
+    private String textTelephoneNumber;
     private Spinner spinnerDepartments;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -38,65 +38,69 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MenuItem it = (MenuItem) findViewById(R.id.resetAction);
+        
+        MenuItem item = (MenuItem) findViewById(R.id.resetAction);
+        
         sharedPreferences= getSharedPreferences("input_text", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        inputtext=sharedPreferences.getString("input",inputtext);
-        inputtext=sharedPreferences.getString("input1",inputtext1);
-        inputtext=sharedPreferences.getString("input2",inputtext2);
-        inputtext=sharedPreferences.getString("input3",inputtext3);
-        inputtext=sharedPreferences.getString("input4",inputtext4);
+        
+        textName = sharedPreferences.getString("textName",textName);
+        textFirstName = sharedPreferences.getString("textFirstName",textFirstName);
+        textBirthday = sharedPreferences.getString("textBirthday",textBirthday);
+        textBirthDepartment = sharedPreferences.getString("textBirthDepartment",textBirthDepartment);
+        textTelephoneNumber = sharedPreferences.getString("textTelephoneNumber",textTelephoneNumber);
+        
         initView();
 
-        resetAction(it);
+        resetAction(item);
 
     }
     protected void initView(){
-        input = (EditText) findViewById(R.id.edit_text);
-        input1 = (EditText) findViewById(R.id.edit_text_1);
-        input2 = (EditText) findViewById(R.id.edit_text_2);
-        input3 = (EditText) findViewById(R.id.edit_text_3);
-        input4 = (EditText) findViewById(R.id.tele);
+        inputName = (EditText) findViewById(R.id.name_edit_text);
+        inputFirstName = (EditText) findViewById(R.id.firstname_edit_text);
+        inputBirthday = (EditText) findViewById(R.id.birthday_edit_text);
+        inputBirthDepartment = (EditText) findViewById(R.id.birth_city_edit_view);
+        inputTelephoneNumber = (EditText) findViewById(R.id.telephone_edit_view);
         spinnerDepartments = (Spinner) findViewById(R.id.Spinner);
-        inputtext=sharedPreferences.getString("input",inputtext);
-        inputtext=sharedPreferences.getString("input1",inputtext1);
-        inputtext=sharedPreferences.getString("input2",inputtext2);
-        inputtext=sharedPreferences.getString("input3",inputtext3);
-        inputtext=sharedPreferences.getString("input4",inputtext4);
-        input.setText(inputtext);
-        input1.setText(inputtext1);
-        input2.setText(inputtext2);
-        input3.setText(inputtext3);
-        input4.setText(inputtext4);
+        textName = sharedPreferences.getString("textName",textName);
+        textFirstName = sharedPreferences.getString("textFirstName",textFirstName);
+        textBirthday = sharedPreferences.getString("textBirthday",textBirthday);
+        textBirthDepartment = sharedPreferences.getString("textBirthDepartment",textBirthDepartment);
+        textTelephoneNumber = sharedPreferences.getString("textTelephoneNumber",textTelephoneNumber);
+        inputName.setText(textName);
+        inputFirstName.setText(textFirstName);
+        inputBirthday.setText(textBirthday);
+        inputBirthDepartment.setText(textBirthDepartment);
+        inputTelephoneNumber.setText(textTelephoneNumber);
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        inputtext = input.getText().toString();
-        inputtext1 = input1.getText().toString();
-        inputtext2 = input2.getText().toString();
-        inputtext3 = input3.getText().toString();
-        inputtext4 = input4.getText().toString();
-        outState.putString("input",inputtext);
-        outState.putString("input1",inputtext1);
-        outState.putString("input2",inputtext2);
-        outState.putString("input3",inputtext3);
-        outState.putString("input4",inputtext4);
+        textName = inputName.getText().toString();
+        textFirstName = inputFirstName.getText().toString();
+        textBirthday = inputBirthday.getText().toString();
+        textBirthDepartment = inputBirthDepartment.getText().toString();
+        textTelephoneNumber = inputTelephoneNumber.getText().toString();
+        outState.putString("input",textName);
+        outState.putString("inputFirstName",textFirstName);
+        outState.putString("inputBirthday",textBirthday);
+        outState.putString("inputBirthDepartment",textBirthDepartment);
+        outState.putString("inputTelephoneNumber",textTelephoneNumber);
         super.onSaveInstanceState(outState);
     }
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        inputtext = savedInstanceState.getString("input");
-        input.setText(inputtext);
-        inputtext1 = savedInstanceState.getString("input1");
-        input1.setText(inputtext1);
-        inputtext2 = savedInstanceState.getString("input2");
-        input2.setText(inputtext2);
-        inputtext3 = savedInstanceState.getString("input3");
-        input3.setText(inputtext3);
-        inputtext4 = savedInstanceState.getString("input4");
-        input4.setText(inputtext4);
+        textName = savedInstanceState.getString("input");
+        inputName.setText(textName);
+        textFirstName = savedInstanceState.getString("inputFirstName");
+        inputFirstName.setText(textFirstName);
+        textBirthday = savedInstanceState.getString("inputBirthday");
+        inputBirthday.setText(textBirthday);
+        textBirthDepartment = savedInstanceState.getString("inputBirthDepartment");
+        inputBirthDepartment.setText(textBirthDepartment);
+        textTelephoneNumber = savedInstanceState.getString("inputTelephoneNumber");
+        inputTelephoneNumber.setText(textTelephoneNumber);
 
 
     }
@@ -109,21 +113,21 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void resetAction(MenuItem item) {
-        inputtext = "";
-        inputtext1 = "";
-        inputtext2 = "";
-        inputtext3 = "";
-        input.setText(inputtext);
-        input1.setText(inputtext1);
-        input2.setText(inputtext2);
-        input3.setText(inputtext3);
+        textName = "";
+        textFirstName = "";
+        textBirthday = "";
+        textBirthDepartment = "";
+        inputName.setText(textName);
+        inputFirstName.setText(textFirstName);
+        inputBirthday.setText(textBirthday);
+        inputBirthDepartment.setText(textBirthDepartment);
         spinnerDepartments.setSelection(0);
         deleteAllNumbers();
     }
 
     public void searchAction(MenuItem item) {
         Intent intent = new Intent();
-        intent.setData(Uri.parse( "http://fr.wikipedia.org/?search="+input3.getText().toString()));
+        intent.setData(Uri.parse( "http://fr.wikipedia.org/?search="+inputBirthDepartment.getText().toString()));
         intent.setAction(Intent.ACTION_VIEW);
         this.startActivity(intent);
     }
@@ -131,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void shareAction(MenuItem item) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, input3.getText().toString());
+        sendIntent.putExtra(Intent.EXTRA_TEXT, inputBirthDepartment.getText().toString());
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
@@ -141,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void Validation() {
-        Snackbar.make(findViewById(R.id.snackbar_container), input.getText().toString()+ input1.getText().toString() + input2.getText().toString() + input3.getText().toString(), Snackbar.LENGTH_LONG).show();
+        Snackbar.make(findViewById(R.id.snackbar_container), inputName.getText().toString()+ inputFirstName.getText().toString() + inputBirthday.getText().toString() + inputBirthDepartment.getText().toString(), Snackbar.LENGTH_LONG).show();
     }
 
     public void ShowDate(View v) {
@@ -165,14 +169,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void Add() {
-//        LinearLayout layout = (LinearLayout) findViewById(R.id.main);
         LinearLayout layout = (LinearLayout) findViewById(R.id.number_area);
         LinearLayout AddLayout = new LinearLayout(this);
         AddLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         AddLayout.setOrientation(LinearLayout.HORIZONTAL);
         TextView shownumber = new TextView(this);
-        shownumber.setText(input4.getText());
-        inputtext4 = input4.getText().toString();
+        shownumber.setText(inputTelephoneNumber.getText());
+        textTelephoneNumber = inputTelephoneNumber.getText().toString();
         AddLayout.addView(shownumber);
         Button delete = new Button(this);
         delete.setText("Delete");
@@ -184,8 +187,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         });
         AddLayout.addView(delete);
         layout.addView(AddLayout);
-        inputtext4 = "";
-        input4.setText(inputtext4);
+        textTelephoneNumber = "";
+        inputTelephoneNumber.setText(textTelephoneNumber);
     }
 
     private void deleteAllNumbers() {
@@ -195,22 +198,22 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        inputtext2 = dayOfMonth+"/"+(month+1)+"/"+year;
-        input2.setText(inputtext2);
+        textBirthday = dayOfMonth+"/"+(month+1)+"/"+year;
+        inputBirthday.setText(textBirthday);
     }
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        inputtext = input.getText().toString();
-        inputtext1 = input1.getText().toString();
-        inputtext2 = input2.getText().toString();
-        inputtext3 = input3.getText().toString();
-        inputtext4 = input4.getText().toString();
-        editor.putString("input", inputtext);
-        editor.putString("input1", inputtext1);
-        editor.putString("input2", inputtext2);
-        editor.putString("input3", inputtext3);
-        editor.putString("input4", inputtext4);
+        textName = inputName.getText().toString();
+        textFirstName = inputFirstName.getText().toString();
+        textBirthday = inputBirthday.getText().toString();
+        textBirthDepartment = inputBirthDepartment.getText().toString();
+        textTelephoneNumber = inputTelephoneNumber.getText().toString();
+        editor.putString("input", textName);
+        editor.putString("inputFirstName", textFirstName);
+        editor.putString("inputBirthday", textBirthday);
+        editor.putString("inputBirthDepartment", textBirthDepartment);
+        editor.putString("inputTelephoneNumber", textTelephoneNumber);
         editor.commit();
     }
 }
