@@ -137,6 +137,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private void Validation() {
         Snackbar.make(findViewById(R.id.snackbar_container), inputName.getText().toString()+ inputFirstName.getText().toString() + inputBirthday.getText().toString() + inputBirthDepartment.getText().toString(), Snackbar.LENGTH_LONG).show();
+
+        Stocker stocker = new Stocker();
+        stocker.setName(inputName.getText().toString());
+        stocker.setFirstname(inputFirstName.getText().toString());
+        stocker.setBirthday(inputBirthday.getText().toString());
+        stocker.setBirthCity(inputBirthDepartment.getText().toString());
+        Bundle b = new Bundle();
+        b.putParcelable("stocker", stocker);
+        Intent i = new Intent(MainActivity.this,DisplayActivity.class);
+        i.putExtras(b);
+        startActivity(i);
+
+
     }
 
     public void ShowDate(View v) {
@@ -204,7 +217,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         editor.putString("textBirthday", textBirthday);
         editor.putString("textBirthDepartment", textBirthDepartment);
         editor.putString("textTelephoneNumber", textTelephoneNumber);
-
         editor.apply();
         super.onDestroy();
     }
