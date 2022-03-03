@@ -208,6 +208,15 @@ public class MainActivity extends AppCompatActivity {
         shownumber.setText(inputTelephoneNumber.getText());
         textTelephoneNumber = inputTelephoneNumber.getText().toString();
         AddLayout.addView(shownumber);
+        Button call = new Button(this);
+        call.setText("Delete");
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //layout.removeView(AddLayout);
+            }
+        });
+        AddLayout.addView(call);
         Button delete = new Button(this);
         delete.setText("Delete");
         delete.setOnClickListener(new View.OnClickListener() {
@@ -227,11 +236,7 @@ public class MainActivity extends AppCompatActivity {
         layout.removeAllViews();
     }
 
-//    @Override
-//    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//        textBirthday = dayOfMonth+"/"+(month+1)+"/"+year;
-//        inputBirthday.setText(textBirthday);
-//    }
+
     @Override
     protected void onDestroy() {
         textName = inputName.getText().toString();
@@ -250,17 +255,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        System.out.println(resultCode);
+        //System.out.println(resultCode);
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_DATE_PICKER & resultCode == DateActivity.RESULT_OK && (data != null)) {
+        if (requestCode == REQUEST_DATE_PICKER & resultCode == RESULT_OK && (data != null)) {
             String dateSelected = data.getStringExtra("date_selected");
-            System.out.println(dateSelected);
+            //System.out.println(dateSelected);
             inputBirthday.setText(dateSelected);
         }
-        else if (requestCode == REQUEST_EDIT_FIRST_NAME & resultCode == DateActivity.RESULT_OK && (data != null)) {
-            String dateSelected = data.getStringExtra("date_selected");
-            System.out.println(dateSelected);
-            inputBirthday.setText(dateSelected);
+        else if (requestCode == REQUEST_EDIT_FIRST_NAME & resultCode == RESULT_OK && (data != null)) {
+            String FirstNme = data.getStringExtra("first_name_edited");
+            //System.out.println(dateSelected);
+            inputFirstName.setText(FirstNme);
         }
     }
 }
