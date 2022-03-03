@@ -25,7 +25,7 @@ public class DisplayActivity extends AppCompatActivity {
         theName = (TextView) findViewById(R.id.name);
         theFirstName = (TextView) findViewById(R.id.firstname);
         theBirthday = (TextView) findViewById(R.id.birthday);
-        theBirthCity = (TextView) findViewById(R.id.birthday);
+        theBirthCity = (TextView) findViewById(R.id.birthcity);
         Intent i = getIntent();
         Bundle bun = i.getExtras();
         Stocker stocker = bun.getParcelable("stocker");

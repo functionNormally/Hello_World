@@ -131,6 +131,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         startActivity(sendIntent);
     }
 
+    public void DateAction(MenuItem item) {
+        Intent i = new Intent("android.intent.action.PICK");
+        startActivity(i);
+    }
+
     public void Validation(View v) {
         Validation();
     }

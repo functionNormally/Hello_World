@@ -13,4 +13,6 @@
     <string name="share_action">Share</string>
     <string name="Add">Add</string>
     <string name="add_telephone_number">Add Telephone number</string>
+    <string name="pickDateActivity">pickDateActivity</string>
+    <string name="Date_action">date</string>
 </resources>

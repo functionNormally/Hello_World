@@ -15,4 +15,9 @@
         android:onClick="shareAction">
 
     </item>
+    <item android:id="@+id/DateAction"
+        android:title="@string/Date_action"
+        android:onClick="DateAction">
+
+    </item>
 </menu>
