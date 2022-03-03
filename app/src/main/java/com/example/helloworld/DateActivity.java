@@ -18,8 +18,6 @@ public class DateActivity extends AppCompatActivity implements DatePickerDialog.
     private Button buttonConfirm;
     private Button buttonCancel;
 
-    static final int RESULT_OK = 1;
-    static final int RESULT_CANCELED = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
