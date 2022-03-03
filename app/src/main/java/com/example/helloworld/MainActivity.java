@@ -157,7 +157,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void ShowName() {
+
+    public void showName(View v) {
+        ShowName();
+    }
+
+    private void ShowName() {
         Intent i = new Intent("android.intent.action.VIEW");
         Stocker stocker = new Stocker();
         stocker.setName(inputName.getText().toString());
@@ -168,7 +173,11 @@ public class MainActivity extends AppCompatActivity {
         //startActivityForResult(i, REQUEST_DATE_PICKER);
     }
 
-    public void EditFirstName() {
+    public void editFirstName(View v) {
+        editFirstName();
+    }
+
+    private void editFirstName() {
         Intent i = new Intent("android.intent.action.EDIT");
         Stocker stocker = new Stocker();
         stocker.setFirstname(inputFirstName.getText().toString());

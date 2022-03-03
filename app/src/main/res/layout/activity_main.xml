@@ -21,7 +21,7 @@
             android:id="@+id/button_show_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="ShowName"
+            android:onClick="showName"
             android:text="@string/showName" />
         <EditText
             android:id="@+id/name_edit_text"
@@ -39,7 +39,7 @@
             android:id="@+id/button_edit_first_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="EditFirstName"
+            android:onClick="editFirstName"
             android:text="@string/editfirstname" />
         <EditText
             android:id="@+id/firstname_edit_text"
