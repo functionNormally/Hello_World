@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     static final int REQUEST_DATE_PICKER = 0;
+    static final int REQUEST_EDIT_FIRST_NAME = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,10 +136,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(sendIntent);
     }
 
-    public void DateAction(MenuItem item) {
-        Intent i = new Intent("android.intent.action.PICK");
-        startActivity(i);
-    }
 
     public void Validation(View v) {
         Validation();
@@ -158,6 +156,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
 
 
+    }
+    public void ShowName() {
+        Intent i = new Intent("android.intent.action.VIEW");
+        Stocker stocker = new Stocker();
+        stocker.setName(inputName.getText().toString());
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("stocker", stocker);
+        i.putExtras(bundle);
+        startActivity(i);
+        //startActivityForResult(i, REQUEST_DATE_PICKER);
+    }
+
+    public void EditFirstName() {
+        Intent i = new Intent("android.intent.action.EDIT");
+        Stocker stocker = new Stocker();
+        stocker.setFirstname(inputFirstName.getText().toString());
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("stocker", stocker);
+        i.putExtras(bundle);
+        //startActivity(i);
+        startActivityForResult(i, REQUEST_EDIT_FIRST_NAME);
     }
 
     public void ShowDate(View v) {
@@ -234,6 +253,11 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(resultCode);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_DATE_PICKER & resultCode == DateActivity.RESULT_OK && (data != null)) {
+            String dateSelected = data.getStringExtra("date_selected");
+            System.out.println(dateSelected);
+            inputBirthday.setText(dateSelected);
+        }
+        else if (requestCode == REQUEST_EDIT_FIRST_NAME & resultCode == DateActivity.RESULT_OK && (data != null)) {
             String dateSelected = data.getStringExtra("date_selected");
             System.out.println(dateSelected);
             inputBirthday.setText(dateSelected);

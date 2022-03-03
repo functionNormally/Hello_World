@@ -17,4 +17,9 @@
     <string name="Date_action">date</string>
     <string name="btn_confirm">Confirm</string>
     <string name="btn_cancel">Cancel</string>
+    <string name="CallTeleActivity">CallTeleActivity</string>
+    <string name="EditFirstNameActivity">EditFirstNameActivity</string>
+    <string name="ShowNameActivity">ShowNameActivity</string>
+    <string name="showName">Show</string>
+    <string name="editfirstname">EditFirstName</string>
 </resources>
