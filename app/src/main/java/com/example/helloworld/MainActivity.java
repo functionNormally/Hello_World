@@ -1,5 +1,6 @@
 package com.example.helloworld;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity {
     private EditText inputName;
     private EditText inputFirstName;
     private EditText inputBirthday;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private Spinner spinnerDepartments;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
+    static final int REQUEST_DATE_PICKER = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,14 +166,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
 
     private void ShowDate() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this,
-                this,
-                Calendar.getInstance().get(Calendar.YEAR),
-                Calendar.getInstance().get(Calendar.MONTH),
-                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-        );
-        datePickerDialog.show();
+        Intent i = new Intent("android.intent.action.PICK");
+        Stocker stocker = new Stocker();
+        stocker.setBirthday(inputBirthday.getText().toString());
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("stocker", stocker);
+        i.putExtras(bundle);
+//        startActivity(i);
+        startActivityForResult(i, REQUEST_DATE_PICKER);
     }
 
     public void Add(View v) {
@@ -205,11 +208,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         layout.removeAllViews();
     }
 
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        textBirthday = dayOfMonth+"/"+(month+1)+"/"+year;
-        inputBirthday.setText(textBirthday);
-    }
+//    @Override
+//    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//        textBirthday = dayOfMonth+"/"+(month+1)+"/"+year;
+//        inputBirthday.setText(textBirthday);
+//    }
     @Override
     protected void onDestroy() {
         textName = inputName.getText().toString();
@@ -224,6 +227,17 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         editor.putString("textTelephoneNumber", textTelephoneNumber);
         editor.apply();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        System.out.println(resultCode);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_DATE_PICKER & resultCode == DateActivity.RESULT_OK && (data != null)) {
+            String dateSelected = data.getStringExtra("date_selected");
+            System.out.println(dateSelected);
+            inputBirthday.setText(dateSelected);
+        }
     }
 }
 

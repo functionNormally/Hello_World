@@ -15,4 +15,6 @@
     <string name="add_telephone_number">Add Telephone number</string>
     <string name="pickDateActivity">pickDateActivity</string>
     <string name="Date_action">date</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>
