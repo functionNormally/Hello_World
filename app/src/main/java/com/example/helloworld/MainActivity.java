@@ -20,7 +20,10 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private EditText inputName;
@@ -34,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private String textBirthday;
     private String textBirthDepartment;
     private String textTelephoneNumber;
+    private Integer indexSpinnerDepartments = 0;
     private ArrayList<String> teleNumberList;
+    private Set<String> numberSet = new HashSet<String>();
 
     private Spinner spinnerDepartments;
     private SharedPreferences sharedPreferences;
@@ -73,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         textBirthday = sharedPreferences.getString("textBirthday",textBirthday);
         textBirthDepartment = sharedPreferences.getString("textBirthDepartment",textBirthDepartment);
         textTelephoneNumber = sharedPreferences.getString("textTelephoneNumber",textTelephoneNumber);
+        indexSpinnerDepartments = sharedPreferences.getInt("spinnerDepartments",indexSpinnerDepartments);
 
         // Set text for TextView widgets in MainLayout
         inputName.setText(textName);
@@ -80,6 +86,14 @@ public class MainActivity extends AppCompatActivity {
         inputBirthday.setText(textBirthday);
         inputBirthDepartment.setText(textBirthDepartment);
         inputTelephoneNumber.setText(textTelephoneNumber);
+        spinnerDepartments.setSelection(indexSpinnerDepartments);
+
+        //Add Telephone Number
+        numberSet = sharedPreferences.getStringSet("NumberSet",numberSet);
+        for(String number: numberSet){
+            teleNumberList.add(number);
+        }
+        ReAdd();
     }
 
     /**
@@ -262,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 layout.removeView(AddLayout);
                 teleNumberList.remove(shownumber.getText().toString());
+                numberSet.remove(shownumber.getText().toString());
             }
         });
         AddLayout.addView(delete);
@@ -300,6 +315,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     layout.removeView(AddLayout);
                     teleNumberList.remove(shownumber.getText().toString());
+                    numberSet.remove(shownumber.getText().toString());
                 }
             });
             AddLayout.addView(delete);
@@ -320,11 +336,19 @@ public class MainActivity extends AppCompatActivity {
         textBirthday = inputBirthday.getText().toString();
         textBirthDepartment = inputBirthDepartment.getText().toString();
         textTelephoneNumber = inputTelephoneNumber.getText().toString();
+        indexSpinnerDepartments = spinnerDepartments.getSelectedItemPosition();
         editor.putString("textName", textName);
         editor.putString("textFirstName", textFirstName);
         editor.putString("textBirthday", textBirthday);
         editor.putString("textBirthDepartment", textBirthDepartment);
         editor.putString("textTelephoneNumber", textTelephoneNumber);
+        editor.putInt("spinnerDepartments", indexSpinnerDepartments);
+
+
+        for(String number: teleNumberList){
+            numberSet.add(number);
+        }
+        editor.putStringSet("NumberSet",numberSet);
         editor.apply();
         super.onDestroy();
     }
