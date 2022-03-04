@@ -221,6 +221,11 @@ public class MainActivity extends AppCompatActivity {
         showName();
     }
 
+    /**
+     * Create a new activity to show the entered name information.
+     * Create a stocker which implemented Parcelable, stock the name information to stocker
+     * Start the new activity with stocker containing information
+     */
     private void showName() {
         Intent intent = new Intent("android.intent.action.VIEW");
         Stocker stocker = new Stocker();

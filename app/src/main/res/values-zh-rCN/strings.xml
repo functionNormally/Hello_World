@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">别害怕！</string>
+    <string name="hello_text">大家好！</string>
+    <string name="name_text">姓</string>
+    <string name="pre_name_text">名</string>
+    <string name="Date_na_text">生日</string>
+    <string name="City_na_text">出生城市</string>
+    <string name="City_de_text">出生省</string>
+    <string name="validation_text">验证</string>
+    <string name="Birthday">选择</string>
+    <string name="reset_action">重置</string>
+    <string name="Search_action">搜索</string>
+    <string name="share_action">分享</string>
+    <string name="Add">添加</string>
+    <string name="add_telephone_number">添加电话号码</string>
+    <string name="pickDateActivity">pickDateActivity</string>
+    <string name="Date_action">日期</string>
+    <string name="btn_confirm">确认</string>
+    <string name="btn_cancel">取消</string>
+    <string name="CallTeleActivity">CallTeleActivity</string>
+    <string name="EditFirstNameActivity">EditFirstNameActivity</string>
+    <string name="ShowNameActivity">ShowNameActivity</string>
+    <string name="showName">我姓啥来着</string>
+    <string name="editfirstname">修改名字</string>
+    <string name="call_btn">打电话</string>
+    <string name="birth_department">出生部门</string>
+</resources>
