@@ -130,10 +130,6 @@ public class MainActivity extends AppCompatActivity {
         inputTelephoneNumber.setText(textTelephoneNumber);
         spinnerDepartments.setSelection(savedInstanceState.getInt("spinnerDepartmentsIndex"));
         teleNumberList = savedInstanceState.getStringArrayList("inputTelephoneNumberList");
-<<<<<<< Updated upstream
-        //ReAdd();
-=======
->>>>>>> Stashed changes
     }
 
 
