@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("inputBirthday",textBirthday);
         outState.putString("inputBirthDepartment",textBirthDepartment);
         outState.putString("inputTelephoneNumber",textTelephoneNumber);
+        outState.putInt("spinnerDepartmentsIndex", spinnerDepartments.getSelectedItemPosition());
+        outState.putStringArrayList("inputTelephoneNumberList",teleNumberList);
         super.onSaveInstanceState(outState);
     }
 
@@ -114,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
         inputBirthDepartment.setText(textBirthDepartment);
         textTelephoneNumber = savedInstanceState.getString("inputTelephoneNumber");
         inputTelephoneNumber.setText(textTelephoneNumber);
+        spinnerDepartments.setSelection(savedInstanceState.getInt("spinnerDepartmentsIndex"));
+        teleNumberList = savedInstanceState.getStringArrayList("inputTelephoneNumberList");
+        ReAdd();
     }
 
 
@@ -256,13 +261,50 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 layout.removeView(AddLayout);
-                teleNumberList.remove(inputTelephoneNumber.getText().toString());
+                teleNumberList.remove(shownumber.getText().toString());
             }
         });
         AddLayout.addView(delete);
         layout.addView(AddLayout);
         textTelephoneNumber = "";
         inputTelephoneNumber.setText(textTelephoneNumber);
+    }
+
+    public void ReAdd() {
+        LinearLayout layout = (LinearLayout) findViewById(R.id.number_area);
+        for(String number: teleNumberList){
+            LinearLayout AddLayout = new LinearLayout(this);
+            AddLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            AddLayout.setOrientation(LinearLayout.HORIZONTAL);
+            TextView shownumber = new TextView(this);
+            shownumber.setText(number);
+            AddLayout.addView(shownumber);
+            Button call = new Button(this);
+            call.setText("Call");
+            call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent("android.intent.action.DIAL");
+                    String numberToCall = shownumber.getText().toString();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("number_to_call", numberToCall);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });
+            AddLayout.addView(call);
+            Button delete = new Button(this);
+            delete.setText("Delete");
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    layout.removeView(AddLayout);
+                    teleNumberList.remove(shownumber.getText().toString());
+                }
+            });
+            AddLayout.addView(delete);
+            layout.addView(AddLayout);
+        }
     }
 
     private void deleteAllNumbers() {
