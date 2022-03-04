@@ -222,12 +222,17 @@ public class MainActivity extends AppCompatActivity {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //layout.removeView(AddLayout);
+                Intent intent = new Intent("android.intent.action.DIAL");
+                String numberToCall = shownumber.getText().toString();
+                Bundle bundle = new Bundle();
+                bundle.putString("number_to_call", numberToCall);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
         AddLayout.addView(call);
         Button delete = new Button(this);
-        delete.setText("Call");
+        delete.setText("Delete");
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

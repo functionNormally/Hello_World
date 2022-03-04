@@ -22,4 +22,5 @@
     <string name="ShowNameActivity">ShowNameActivity</string>
     <string name="showName">Show</string>
     <string name="editfirstname">EditFirstName</string>
+    <string name="call_btn">CALL</string>
 </resources>

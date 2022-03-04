@@ -9,20 +9,8 @@ public class Stocker implements Parcelable {
     private String Firstname;
     private String Birthday;
     private String BirthCity;
-
-    public ArrayList<String> getTeleNumbers() {
-        return teleNumbers;
-    }
-
-    public void addTeleNumbers(ArrayList<String> teleNumbers) {
-        this.teleNumbers = teleNumbers;
-    }
-    public void deleteTeleNumbers(ArrayList<String> teleNumbers) {
-        this.teleNumbers = teleNumbers;
-    }
-
-
     private ArrayList<String> teleNumbers;
+
     public Stocker(){
     }
     public String getName(){
@@ -50,6 +38,19 @@ public class Stocker implements Parcelable {
         this.BirthCity = BirthCity;
     }
 
+    public ArrayList<String> getTeleNumbers() {
+        return teleNumbers;
+    }
+    public void addTeleNumber(String teleNumber) {
+        this.teleNumbers.add(teleNumber);
+    }
+    public void deleteTeleNumber(String teleNumber) {
+        this.teleNumbers.remove(teleNumber);
+    }
+    public void clearTeleNumbers() {
+        this.teleNumbers.clear();
+    }
+
 
     @Override
     public int describeContents(){
@@ -62,6 +63,7 @@ public class Stocker implements Parcelable {
         parcel.writeString(Firstname);
         parcel.writeString(Birthday);
         parcel.writeString(BirthCity);
+        parcel.writeList(teleNumbers);
     }
 
 
@@ -80,5 +82,6 @@ public class Stocker implements Parcelable {
         Firstname = in.readString();
         Birthday = in.readString();
         BirthCity = in.readString();
+        teleNumbers = in.readArrayList(null);
     }
 }
