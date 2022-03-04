@@ -47,7 +47,7 @@ public class DisplayActivity extends AppCompatActivity {
             NumberLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             NumberLayout.setOrientation(LinearLayout.VERTICAL);
             TextView shownumber = new TextView(this);
-            shownumber.setText(number);
+            shownumber.setText("Telephonenumber"+number);
             NumberLayout.addView(shownumber);
             layout.addView(NumberLayout);
         }
