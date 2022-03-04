@@ -38,6 +38,10 @@ public class Stocker implements Parcelable {
         this.BirthCity = BirthCity;
     }
 
+    public void setTeleNumbers(ArrayList<String> teleNumbers) {
+        this.teleNumbers = teleNumbers;
+    }
+
     public ArrayList<String> getTeleNumbers() {
         return teleNumbers;
     }

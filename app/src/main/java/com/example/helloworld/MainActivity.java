@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputTelephoneNumber;
     private String textName;
     private String textFirstName;
+    private ArrayList<String> NumberList;
     private String textBirthday;
     private String textBirthDepartment;
     private String textTelephoneNumber;
@@ -113,10 +116,12 @@ public class MainActivity extends AppCompatActivity {
         textFirstName = "";
         textBirthday = "";
         textBirthDepartment = "";
+        textTelephoneNumber = "";
         inputName.setText(textName);
         inputFirstName.setText(textFirstName);
         inputBirthday.setText(textBirthday);
         inputBirthDepartment.setText(textBirthDepartment);
+        inputTelephoneNumber.setText(textTelephoneNumber);
         spinnerDepartments.setSelection(0);
         deleteAllNumbers();
     }
@@ -149,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         stocker.setFirstname(inputFirstName.getText().toString());
         stocker.setBirthday(inputBirthday.getText().toString());
         stocker.setBirthCity(inputBirthDepartment.getText().toString());
+        stocker.setTeleNumbers(NumberList);
         Bundle b = new Bundle();
         b.putParcelable("stocker", stocker);
         Intent i = new Intent(MainActivity.this,DisplayActivity.class);
@@ -216,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
         TextView shownumber = new TextView(this);
         shownumber.setText(inputTelephoneNumber.getText());
         textTelephoneNumber = inputTelephoneNumber.getText().toString();
+        NumberList.add(inputTelephoneNumber.getText().toString());
         AddLayout.addView(shownumber);
         Button call = new Button(this);
         call.setText("Call");
@@ -237,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 layout.removeView(AddLayout);
+                NumberList.remove(inputTelephoneNumber.getText().toString());
             }
         });
         AddLayout.addView(delete);
