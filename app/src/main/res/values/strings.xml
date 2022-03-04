@@ -21,6 +21,7 @@
     <string name="EditFirstNameActivity">EditFirstNameActivity</string>
     <string name="ShowNameActivity">ShowNameActivity</string>
     <string name="showName">Show</string>
-    <string name="editfirstname">EditFirstName</string>
+    <string name="editfirstname">Edit First Name</string>
     <string name="call_btn">CALL</string>
+    <string name="birth_department">Birth department</string>
 </resources>

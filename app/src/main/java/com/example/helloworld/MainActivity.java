@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputTelephoneNumber;
     private String textName;
     private String textFirstName;
-    private ArrayList<String> NumberList;
+    private ArrayList<String> NumberList = new ArrayList<String> ();
     private String textBirthday;
     private String textBirthDepartment;
     private String textTelephoneNumber;
@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
         stocker.setBirthday(inputBirthday.getText().toString());
         stocker.setBirthCity(inputBirthDepartment.getText().toString());
         stocker.setTeleNumbers(NumberList);
+        stocker.setBirthDepartment(spinnerDepartments.getSelectedItem().toString());
         Bundle b = new Bundle();
         b.putParcelable("stocker", stocker);
         Intent i = new Intent(MainActivity.this,DisplayActivity.class);
@@ -222,8 +223,10 @@ public class MainActivity extends AppCompatActivity {
         TextView shownumber = new TextView(this);
         shownumber.setText(inputTelephoneNumber.getText());
         textTelephoneNumber = inputTelephoneNumber.getText().toString();
-        NumberList.add(inputTelephoneNumber.getText().toString());
+        System.out.println(inputTelephoneNumber.getText().toString());
+        System.out.println(shownumber.getText().toString());
         AddLayout.addView(shownumber);
+        NumberList.add(shownumber.getText().toString());
         Button call = new Button(this);
         call.setText("Call");
         call.setOnClickListener(new View.OnClickListener() {

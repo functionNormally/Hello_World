@@ -17,6 +17,7 @@ public class DisplayActivity extends AppCompatActivity {
     private TextView theFirstName;
     private TextView theBirthday;
     private TextView theBirthCity;
+    private TextView theBirthDepartment;
     private ArrayList<String> Numbers;
 
 
@@ -30,13 +31,15 @@ public class DisplayActivity extends AppCompatActivity {
         theFirstName = (TextView) findViewById(R.id.firstname);
         theBirthday = (TextView) findViewById(R.id.birthday);
         theBirthCity = (TextView) findViewById(R.id.birthcity);
+        theBirthDepartment = (TextView) findViewById(R.id.birth_department);
         Intent i = getIntent();
         Bundle bun = i.getExtras();
         Stocker stocker = bun.getParcelable("stocker");
-        theName.setText(stocker.getName());
-        theFirstName.setText(stocker.getFirstname());
-        theBirthday.setText(stocker.getBirthday());
-        theBirthCity.setText(stocker.getBirthCity());
+        theName.setText("Name: " + stocker.getName());
+        theFirstName.setText("First name: " + stocker.getFirstname());
+        theBirthday.setText("Birthday: " + stocker.getBirthday());
+        theBirthCity.setText("Birth city: " + stocker.getBirthCity());
+        theBirthDepartment.setText("Birth department: " + stocker.getBirthDepartment());
         Numbers = stocker.getTeleNumbers();
         for(String number: Numbers){
             LinearLayout layout = (LinearLayout) findViewById(R.id.displaylayout);

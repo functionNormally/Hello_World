@@ -18,6 +18,8 @@
             android:layout_height="wrap_content"
             android:text="@string/name_text"/>
 
+
+
         <TextView
             android:id="@+id/firstname"
             android:layout_width="wrap_content"
@@ -31,6 +33,11 @@
             android:text="@string/Date_na_text"/>
 
 
+        <TextView
+            android:id="@+id/birth_department"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/birth_department" />
 
 
         <TextView
