@@ -2,11 +2,27 @@ package com.example.helloworld;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Stocker implements Parcelable {
     private String Name;
     private String Firstname;
     private String Birthday;
     private String BirthCity;
+
+    public ArrayList<String> getTeleNumbers() {
+        return teleNumbers;
+    }
+
+    public void addTeleNumbers(ArrayList<String> teleNumbers) {
+        this.teleNumbers = teleNumbers;
+    }
+    public void deleteTeleNumbers(ArrayList<String> teleNumbers) {
+        this.teleNumbers = teleNumbers;
+    }
+
+
+    private ArrayList<String> teleNumbers;
     public Stocker(){
     }
     public String getName(){

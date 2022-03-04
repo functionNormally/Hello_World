@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         textTelephoneNumber = inputTelephoneNumber.getText().toString();
         AddLayout.addView(shownumber);
         Button call = new Button(this);
-        call.setText("Delete");
+        call.setText("Call");
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         });
         AddLayout.addView(call);
         Button delete = new Button(this);
-        delete.setText("Delete");
+        delete.setText("Call");
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
