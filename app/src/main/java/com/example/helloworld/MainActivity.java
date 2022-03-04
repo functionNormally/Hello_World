@@ -130,7 +130,10 @@ public class MainActivity extends AppCompatActivity {
         inputTelephoneNumber.setText(textTelephoneNumber);
         spinnerDepartments.setSelection(savedInstanceState.getInt("spinnerDepartmentsIndex"));
         teleNumberList = savedInstanceState.getStringArrayList("inputTelephoneNumberList");
+<<<<<<< Updated upstream
         //ReAdd();
+=======
+>>>>>>> Stashed changes
     }
 
 
@@ -377,16 +380,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        //System.out.println(resultCode);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_DATE_PICKER & resultCode == RESULT_OK && (data != null)) {
             String dateSelected = data.getStringExtra("date_selected");
-            //System.out.println(dateSelected);
             inputBirthday.setText(dateSelected);
         }
         else if (requestCode == REQUEST_EDIT_FIRST_NAME & resultCode == RESULT_OK && (data != null)) {
             String FirstNme = data.getStringExtra("first_name_edited");
-            //System.out.println(dateSelected);
             inputFirstName.setText(FirstNme);
         }
     }
