@@ -58,7 +58,7 @@
             android:id="@+id/button_show_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="ShowDate"
+            android:onClick="showDate"
             android:text="@string/Birthday" />
 
 
