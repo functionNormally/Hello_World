@@ -23,8 +23,8 @@ public class EditFirstNameActivity extends AppCompatActivity {
 
     private void initView() {
         firstNameEdit = (EditText) findViewById(R.id.edit_first_name);
-        buttonConfirm = (Button) findViewById(R.id.button_confirm);
-        buttonCancel = (Button) findViewById(R.id.button_cancel);
+        buttonConfirm = (Button) findViewById(R.id.button_confirm_first_name);
+        buttonCancel = (Button) findViewById(R.id.button_cancel_first_name);
 
         Stocker stocker = getStocker();
         firstNameEdit.setText(stocker.getFirstname());
@@ -49,11 +49,11 @@ public class EditFirstNameActivity extends AppCompatActivity {
         finish();
     }
 
-    public void confirmBtnClick(View v) {
+    public void confirmBtnClickEditFirstName(View v) {
         btnClick(true);
     }
 
-    public void cancelBtnClick(View v) {
+    public void cancelBtnClickEditFirstName(View v) {
         btnClick(false);
     }
 

@@ -32,8 +32,7 @@
         <activity
             android:name=".ShowNameActivity"
             android:label="@string/ShowNameActivity"
-            android:exported="true"
-            tools:ignore="Instantiatable">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -49,16 +48,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".CallTeleActivity"
-            android:label="@string/CallTeleActivity"
-            android:exported="true"
-            tools:ignore="Instantiatable">
-            <intent-filter>
-                <action android:name="android.intent.action.DIAL" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+<!--        <activity-->
+<!--            android:name=".CallTeleActivity"-->
+<!--            android:label="@string/CallTeleActivity"-->
+<!--            android:exported="true"-->
+<!--            tools:ignore="Instantiatable">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.DIAL" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
 
         <activity android:name=".DisplayActivity"/>
