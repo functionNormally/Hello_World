@@ -28,15 +28,17 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputBirthday;
     private EditText inputBirthDepartment;
     private EditText inputTelephoneNumber;
+
     private String textName;
     private String textFirstName;
-    private ArrayList<String> NumberList = new ArrayList<String> ();
     private String textBirthday;
     private String textBirthDepartment;
     private String textTelephoneNumber;
+    private ArrayList<String> teleNumberList;
+
     private Spinner spinnerDepartments;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     static final int REQUEST_DATE_PICKER = 0;
     static final int REQUEST_EDIT_FIRST_NAME = 1;
@@ -61,11 +63,18 @@ public class MainActivity extends AppCompatActivity {
         inputBirthDepartment = (EditText) findViewById(R.id.birth_city_edit_view);
         inputTelephoneNumber = (EditText) findViewById(R.id.telephone_edit_view);
         spinnerDepartments = (Spinner) findViewById(R.id.Spinner);
+
+        // ArrayList to manage the list of telephone numbers
+        teleNumberList = new ArrayList<>();
+
+        // Get resources stored in persistent file
         textName = sharedPreferences.getString("textName",textName);
         textFirstName = sharedPreferences.getString("textFirstName",textFirstName);
         textBirthday = sharedPreferences.getString("textBirthday",textBirthday);
         textBirthDepartment = sharedPreferences.getString("textBirthDepartment",textBirthDepartment);
         textTelephoneNumber = sharedPreferences.getString("textTelephoneNumber",textTelephoneNumber);
+
+        // Set text for TextView widgets in MainLayout
         inputName.setText(textName);
         inputFirstName.setText(textFirstName);
         inputBirthday.setText(textBirthday);
@@ -73,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         inputTelephoneNumber.setText(textTelephoneNumber);
     }
 
+    /**
+     * 
+     * @param outState
+     */
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         textName = inputName.getText().toString();
@@ -87,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("inputTelephoneNumber",textTelephoneNumber);
         super.onSaveInstanceState(outState);
     }
+
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -100,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
         inputBirthDepartment.setText(textBirthDepartment);
         textTelephoneNumber = savedInstanceState.getString("inputTelephoneNumber");
         inputTelephoneNumber.setText(textTelephoneNumber);
-
-
     }
 
 
@@ -154,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         stocker.setFirstname(inputFirstName.getText().toString());
         stocker.setBirthday(inputBirthday.getText().toString());
         stocker.setBirthCity(inputBirthDepartment.getText().toString());
-        stocker.setTeleNumbers(NumberList);
+        stocker.setTeleNumbers(teleNumberList);
         stocker.setBirthDepartment(spinnerDepartments.getSelectedItem().toString());
         Bundle b = new Bundle();
         b.putParcelable("stocker", stocker);
@@ -177,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
         bundle.putParcelable("stocker", stocker);
         i.putExtras(bundle);
         startActivity(i);
-        //startActivityForResult(i, REQUEST_DATE_PICKER);
     }
 
     public void editFirstName(View v) {
@@ -191,7 +202,6 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putParcelable("stocker", stocker);
         i.putExtras(bundle);
-        //startActivity(i);
         startActivityForResult(i, REQUEST_EDIT_FIRST_NAME);
     }
 
@@ -207,7 +217,6 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putParcelable("stocker", stocker);
         i.putExtras(bundle);
-//        startActivity(i);
         startActivityForResult(i, REQUEST_DATE_PICKER);
     }
 
@@ -226,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(inputTelephoneNumber.getText().toString());
         System.out.println(shownumber.getText().toString());
         AddLayout.addView(shownumber);
-        NumberList.add(shownumber.getText().toString());
+        teleNumberList.add(shownumber.getText().toString());
         Button call = new Button(this);
         call.setText("Call");
         call.setOnClickListener(new View.OnClickListener() {
@@ -247,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 layout.removeView(AddLayout);
-                NumberList.remove(inputTelephoneNumber.getText().toString());
+                teleNumberList.remove(inputTelephoneNumber.getText().toString());
             }
         });
         AddLayout.addView(delete);
