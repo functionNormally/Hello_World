@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         
         sharedPreferences= getSharedPreferences("input_text", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
         initView();
 
     }
@@ -69,10 +70,9 @@ public class MainActivity extends AppCompatActivity {
         inputTelephoneNumber = (EditText) findViewById(R.id.telephone_edit_view);
         spinnerDepartments = (Spinner) findViewById(R.id.Spinner);
 
-        // ArrayList to manage the list of telephone numbers
-        teleNumberList = new ArrayList<>();
+        teleNumberList = new ArrayList<>(); // ArrayList to manage the list of telephone numbers
 
-        // Get resources stored in persistent file
+        /* Get resources stored in persistent file */
         textName = sharedPreferences.getString("textName",textName);
         textFirstName = sharedPreferences.getString("textFirstName",textFirstName);
         textBirthday = sharedPreferences.getString("textBirthday",textBirthday);
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         textTelephoneNumber = sharedPreferences.getString("textTelephoneNumber",textTelephoneNumber);
         indexSpinnerDepartments = sharedPreferences.getInt("spinnerDepartments",indexSpinnerDepartments);
 
-        // Set text for TextView widgets in MainLayout
+        /* Set text for TextView widgets in MainLayout */
         inputName.setText(textName);
         inputFirstName.setText(textFirstName);
         inputBirthday.setText(textBirthday);
@@ -96,10 +96,6 @@ public class MainActivity extends AppCompatActivity {
         ReAdd();
     }
 
-    /**
-     * 
-     * @param outState
-     */
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         textName = inputName.getText().toString();
@@ -120,15 +116,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
         textName = savedInstanceState.getString("input");
-        inputName.setText(textName);
         textFirstName = savedInstanceState.getString("inputFirstName");
-        inputFirstName.setText(textFirstName);
         textBirthday = savedInstanceState.getString("inputBirthday");
-        inputBirthday.setText(textBirthday);
         textBirthDepartment = savedInstanceState.getString("inputBirthDepartment");
-        inputBirthDepartment.setText(textBirthDepartment);
         textTelephoneNumber = savedInstanceState.getString("inputTelephoneNumber");
+
+        inputName.setText(textName);
+        inputFirstName.setText(textFirstName);
+        inputBirthday.setText(textBirthday);
+        inputBirthDepartment.setText(textBirthDepartment);
         inputTelephoneNumber.setText(textTelephoneNumber);
         spinnerDepartments.setSelection(savedInstanceState.getInt("spinnerDepartmentsIndex"));
         teleNumberList = savedInstanceState.getStringArrayList("inputTelephoneNumberList");
@@ -142,21 +140,31 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Reset all the variables and also reset tha value showed in the widgets of MainLayout
+     * @param item item of main menu
+     */
     public void resetAction(MenuItem item) {
         textName = "";
         textFirstName = "";
         textBirthday = "";
         textBirthDepartment = "";
         textTelephoneNumber = "";
+
         inputName.setText(textName);
         inputFirstName.setText(textFirstName);
         inputBirthday.setText(textBirthday);
         inputBirthDepartment.setText(textBirthDepartment);
         inputTelephoneNumber.setText(textTelephoneNumber);
         spinnerDepartments.setSelection(0);
+
         deleteAllNumbers();
     }
 
+    /**
+     * Call the outside application of navigator to search an entered text in widget of MainLayout
+     * @param item item of main menu
+     */
     public void searchAction(MenuItem item) {
         Intent intent = new Intent();
         intent.setData(Uri.parse( "http://fr.wikipedia.org/?search="+inputBirthDepartment.getText().toString()));
@@ -164,6 +172,10 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    /**
+     * Call the outside applications which belong to the ACTION_SEND to share an entered text in widget of MainLayout
+     * @param item item of main menu
+     */
     public void shareAction(MenuItem item) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
@@ -178,8 +190,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Validation() {
+        // Display a snack bar to show entered information
         Snackbar.make(findViewById(R.id.snackbar_container), inputName.getText().toString()+ inputFirstName.getText().toString() + inputBirthday.getText().toString() + inputBirthDepartment.getText().toString(), Snackbar.LENGTH_LONG).show();
 
+        // Stock entered information in a Parcelable class and start a new activity
         Stocker stocker = new Stocker();
         stocker.setName(inputName.getText().toString());
         stocker.setFirstname(inputFirstName.getText().toString());
