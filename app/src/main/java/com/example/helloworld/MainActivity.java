@@ -145,12 +145,14 @@ public class MainActivity extends AppCompatActivity {
      * @param item item of main menu
      */
     public void resetAction(MenuItem item) {
+        /* Reset the variables used in MainActivity */
         textName = "";
         textFirstName = "";
         textBirthday = "";
         textBirthDepartment = "";
         textTelephoneNumber = "";
 
+        /* Reset the content of widgets */
         inputName.setText(textName);
         inputFirstName.setText(textFirstName);
         inputBirthday.setText(textBirthday);
@@ -192,11 +194,14 @@ public class MainActivity extends AppCompatActivity {
         Validation();
     }
 
+    /**
+     * Send all the entered information to a new activity
+     */
     private void Validation() {
-        // Display a snack bar to show entered information
+        /* Display a snack bar to show entered information */
         Snackbar.make(findViewById(R.id.snackbar_container), inputName.getText().toString()+ inputFirstName.getText().toString() + inputBirthday.getText().toString() + inputBirthDepartment.getText().toString(), Snackbar.LENGTH_LONG).show();
 
-        // Stock entered information in a Parcelable class and start a new activity
+        /* Stock entered information in a Parcelable class and start a new activity */
         Stocker stocker = new Stocker();
         stocker.setName(inputName.getText().toString());
         stocker.setFirstname(inputFirstName.getText().toString());
@@ -204,27 +209,27 @@ public class MainActivity extends AppCompatActivity {
         stocker.setBirthCity(inputBirthDepartment.getText().toString());
         stocker.setTeleNumbers(teleNumberList);
         stocker.setBirthDepartment(spinnerDepartments.getSelectedItem().toString());
-        Bundle b = new Bundle();
-        b.putParcelable("stocker", stocker);
-        Intent i = new Intent(MainActivity.this,DisplayActivity.class);
-        i.putExtras(b);
-        startActivity(i);
 
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("stocker", stocker);
+        Intent intent = new Intent(MainActivity.this,DisplayActivity.class);
+        intent.putExtras(bundle);
 
+        startActivity(intent);
     }
 
     public void showName(View v) {
-        ShowName();
+        showName();
     }
 
-    private void ShowName() {
-        Intent i = new Intent("android.intent.action.VIEW");
+    private void showName() {
+        Intent intent = new Intent("android.intent.action.VIEW");
         Stocker stocker = new Stocker();
         stocker.setName(inputName.getText().toString());
         Bundle bundle = new Bundle();
         bundle.putParcelable("stocker", stocker);
-        i.putExtras(bundle);
-        startActivity(i);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     public void editFirstName(View v) {
@@ -241,12 +246,12 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(i, REQUEST_EDIT_FIRST_NAME);
     }
 
-    public void ShowDate(View v) {
-        ShowDate();
+    public void showDate(View v) {
+        showDate();
     }
 
 
-    private void ShowDate() {
+    private void showDate() {
         Intent i = new Intent("android.intent.action.PICK");
         Stocker stocker = new Stocker();
         stocker.setBirthday(inputBirthday.getText().toString());
